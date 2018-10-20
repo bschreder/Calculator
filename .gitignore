@@ -1,0 +1,19 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/Calculator/bin
+/Calculator/obj
+/Calculator.Test/bin
+/Calculator.Test/obj
+/DbRepository/bin
+/DbRepository/obj
+/Library/bin
+/Library/obj
+/Library.Test/bin
+/Library.Test/obj
+/packages
+/Calculator/Content
+/Calculator/Scripts
+/TestMetrics/GeneratedReports/ReportGeneratorOutput

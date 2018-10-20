@@ -1,0 +1,61 @@
+
+<br><br>
+
+<div class="container">
+    <form #f=ngForm [formGroup]="form" class="form-group">
+        <div *ngIf="hasErrors">
+
+        </div>
+
+        <!-- <div *ngIf="calculate.pending">Waiting for results ....</div> -->
+
+        <input type="text" formControlName="topRow" id="topRow" [value]="topRow" class="form-control-lg text-right">
+        <input type="text" formControlName="bottomRow" id="bottomRow" [value]="bottomRow" class="form-control-lg text-right">
+
+        
+        <div class="d-flex flex-row button-row justify-content-between">
+            <button type="button" id="left-parenthesis" class="operator-group" (click)="onOperatorClick('(')">&#40;</button>
+            <button type="button" id="right-parenthesis" class="operator-group" (click)="onOperatorClick(')')">&#41;</button>
+            <button type="button" id="square-root" class="operator-group">&#8730;</button>
+            <button type="button" id="power" class="operator-group" (click)="onOperatorClick('^')">x<sup>y</sup></button>
+            <button type="button" id="back-space" class="operator-group" (click)="onActionClick('backspace')">&#9003;</button>
+        </div>
+
+        <div class="d-flex flex-row button-row justify-content-between">
+            <button type="button" id="one" class="operand-group" (click)="onOperandClick('1')">1</button>
+            <button type="button" id="two" class="operand-group" (click)="onOperandClick('2')">2</button>
+            <button type="button" id="three" class="operand-group" (click)="onOperandClick('3')">3</button>
+            <button type="button" id="addition" class="operator-group" (click)="onOperatorClick('+')">+</button>
+            <button type="button" id="clear-entry" class="operator-group" (click)="onActionClick('clearentry')">CE</button>
+        </div>
+
+        <div class="d-flex flex-row button-row justify-content-between">
+            <button type="button" id="four" class="operand-group" (click)="onOperandClick('4')">4</button>
+            <button type="button" id="five" class="operand-group" (click)="onOperandClick('5')">5</button>
+            <button type="button" id="six" class="operand-group" (click)="onOperandClick('6')">6</button>
+            <button type="button" id="subtraction" class="operator-group" (click)="onOperatorClick('-')">-</button>
+            <button type="button" id="clear" class="operator-group btn btn-danger" (click)="onActionClick('clear')">C</button>
+        </div>
+
+        <div class="d-flex flex-row button-row justify-content-between">
+            <button type="button" id="seven" class="operand-group" (click)="onOperandClick('7')">7</button>
+            <button type="button" id="eight" class="operand-group" (click)="onOperandClick('8')">8</button>
+            <button type="button" id="nine" class="operand-group" (click)="onOperandClick('9')">9</button>
+            <button type="button" id="multiplication" class="operator-group" (click)="onOperatorClick('*')">x</button>
+            <button type="button" id="equals" class="operator-group" (click)="onActionClick('=')">=</button>
+        </div>
+
+        <div class="d-flex flex-row button-row justify-content-between">
+            <button type="button" id="blank-1" class="operand-group"></button>
+            <button type="button" id="zero" class="operand-group" (click)="onOperandClick('0')">0</button>
+            <button type="button" id="blank-2" class="operand-group"></button>
+            <button type="button" id="division" class="operator-group" (click)="onOperatorClick('/')">/</button>
+            <button type="button" id="modulus" class="operator-group" (click)="onOperatorClick('%')">%</button>
+        </div>
+    </form>
+</div>
+
+<br/><br/>
+<p>{{f.value | json}}</p>
+<p>{{topRow | json}}</p>
+<p>{{bottomRow | json}}</p>

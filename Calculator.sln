@@ -5,9 +5,12 @@ VisualStudioVersion = 15.0.27703.2047
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "Calculator\Calculator.csproj", "{BEDA8EAA-1B99-46C3-BE06-0D6184BA3AA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library", "Library\Library.csproj", "{33C4D32B-B3D4-4053-995A-CEDB785A59BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library", "Library\Library.csproj", "{33C4D32B-B3D4-4053-995A-CEDB785A59BC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{EC868EC8-E24C-4744-8F10-59AEB9E0BF1A}"
+	ProjectSection(SolutionItems) = preProject
+		TestMetrics\GenerateUnitTestMetrics.bat = TestMetrics\GenerateUnitTestMetrics.bat
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.Test", "Calculator.Test\Calculator.Test.csproj", "{DB648A5E-FF19-4601-9030-5A8190ADD4BB}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -21,7 +24,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Library.Test", "Library.Tes
 		{BEDA8EAA-1B99-46C3-BE06-0D6184BA3AA3} = {BEDA8EAA-1B99-46C3-BE06-0D6184BA3AA3}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbRepository", "DbRepository\DbRepository.csproj", "{D49F7382-C917-4B90-A7EF-8C164DD84FBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DbRepository", "DbRepository\DbRepository.csproj", "{D49F7382-C917-4B90-A7EF-8C164DD84FBB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4973E506-F766-4998-90F5-A5BADE39F1B2}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

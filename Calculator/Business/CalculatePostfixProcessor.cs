@@ -41,6 +41,7 @@ namespace Calculator.Business
                         string leftOperand = stack.Pop();
 
                         Type operatorType = mathOperators.Where(k => k.Key.Equals(token)).Select(v => v.Value).FirstOrDefault();
+						//  Check for null operatorType
                         var obj = Activator.CreateInstance(operatorType) as IMathOperator<CalculatePostfixResponse>;
                         BResult<CalculatePostfixResponse> br = obj.MathOperator(leftOperand, rightOperand);
                         result.Error.AddRange(br.Error);

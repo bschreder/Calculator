@@ -44,7 +44,7 @@ namespace Calculator.Business
 
                 //  Check input string against valid list of valid operators / digits
                 List<char> goodChar = _operators.Keys.SelectMany(s => s.ToCharArray()).ToList();
-                goodChar.AddRange(new List<char> { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '=' });
+                goodChar.AddRange(new List<char> { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '=', '(', ')' });
                 if (request.Input.Except(goodChar).Any())
                 {
                     string validChar = string.Join(", ", goodChar.Select(c => c.ToString()).ToArray());
