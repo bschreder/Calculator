@@ -17,16 +17,14 @@ export class CalculatorComponent implements OnInit {
   topRow: string;
   bottomRow: string;
 
-  private apiService: CalculatorService;
 
   form = new FormGroup({
     topRow: new FormControl(''),
     bottomRow: new FormControl(''),
   });
 
-  constructor(httpClient: HttpClient) {
-    this.apiService = new CalculatorService(httpClient);
-  }
+
+  constructor(private apiService: CalculatorService) { }
 
   ngOnInit() {
     this.error = null;

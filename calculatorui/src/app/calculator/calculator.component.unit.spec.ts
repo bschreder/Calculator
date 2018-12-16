@@ -1,12 +1,12 @@
 import { async, ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { from } from 'rxjs';
 
 import { CalculatorComponent } from './calculator.component';
 import { CalculatorService } from 'src/services/calculator-service/calculator.service';
 import { CalculateApiResponse } from '../../common/model/calculateApiResponse';
+import { DataService } from 'src/services/data-service/data.service';
 
 
 describe('CalculatorComponent', () => {
@@ -15,7 +15,7 @@ describe('CalculatorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule, ReactiveFormsModule, HttpClientTestingModule, HttpClientModule ],
+      imports: [ FormsModule, ReactiveFormsModule, HttpClientModule ],
       declarations: [ CalculatorComponent ],
       providers: [ CalculatorService ]
     }).compileComponents();
@@ -75,26 +75,28 @@ describe('CalculatorComponent', () => {
     expect(component.bottomRow).toBe('');
   });
 
-  xit('should call = to calculate value', async(() => {
+  it('should call = to calculate value', async(() => {
     const input = '6+2*4/3';
-    component.topRow = input;
     const resultValue: number = Math.floor(6 + 2 * 4 / 3);
     const resultObj = { 'Output' : resultValue };
-
     const response: CalculateApiResponse = { result: JSON.stringify(resultObj), error: [ 'tip top' ]};
-    // console.log(response);
 
-    const calculatorService = TestBed.get(CalculatorService);
-    spyOn(calculatorService, 'calculate').and.returnValue(from ([ response ]));
 
+    const calculatorService = new CalculatorService(null);
+    const dataService = new DataService(null);
+    component = new CalculatorComponent(calculatorService);
+    const spy = spyOn(calculatorService, 'calculate').and.returnValue(from ([ response ]));
+
+
+    component.topRow = input;
     component.onActionClick('=');
-    // fixture.detectChanges();
+    expect(spy).toHaveBeenCalled();
 
-    console.log(component);
-
-    expect(component.topRow).toBe('');
-    expect(component.bottomRow).toBe(input + '=' + response.result['Output']);
-    expect(component.error).toBe(response.error);
-    expect(component.hasErrors).toBeTruthy();
+    fixture.whenStable().then(() => {
+      expect(component.topRow).toBe('');
+      expect(component.bottomRow).toBe(input + '=' + response.result['Output']);
+      expect(component.error).toBe(response.error);
+      expect(component.hasErrors).toBeTruthy();
+    });
   }));
 });
